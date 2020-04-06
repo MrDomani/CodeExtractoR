@@ -1,0 +1,21 @@
+Package: CodeExtractoR
+Type: Package
+Title: Extract Code snippets from PDF files, primarily from RJournal
+Encoding: UTF-8
+Version: 1.0
+Author: Paweł Morgen
+Maintainer: Paweł Morgen <seriousmorgen@protonmail.com>
+Description: A wrapper around API converting pdf to html file, using pdf2htmlex. 
+              The downloaded file is then searched for code snippets, based on their unique font.
+License: GPL (>= 2)
+Depends: R (>= 3.5.0)
+Imports: stringi,
+         httr,
+         tools
+Suggests: knitr,
+          rmarkdown,
+          testthat
+RoxygenNote: 7.1.0
+VignetteBuilder: knitr
+URL: https://MrDomani.github.io/CodeExtractoR/, https://github.com/MrDomani/CodeExtractoR
+BugReports: https://github.com/MrDomani/CodeExtractoR/issues
