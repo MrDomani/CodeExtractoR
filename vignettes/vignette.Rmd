@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+Ever wanted to extract code from PDF files (posted, for example, at [RJournal](https://journal.r-project.org/)), but Ctrl+C Ctrl+V is too exhausting / boring / humiliating? No more:
+
+```{r setup, eval = FALSE}
 library(CodeExtractoR)
+my_url <- "https://journal.r-project.org/archive/2014/RJ-2014-011/RJ-2014-011.pdf"
+extract_code_from_pdf(my_url, 'output.R')
 ```
+
+Boom!
