@@ -26,7 +26,8 @@ Boom!
 
 ## Important notes
 
- * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key may be convenient.
+ * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key is necessary.
+ * Alternatively, you may convert the file(s) by hand at [cloudconvert](https://cloudconvert.com/pdf-to-html) and use `extract_code_from_html()` function.
  * PDF file **must** be supplied as URL link, **not** path to file stored in your filesystem.
 
 
