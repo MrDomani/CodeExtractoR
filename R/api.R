@@ -10,7 +10,7 @@
 #' @details By deafult, it uses my API key, which is limited for 25 mins (or, roughly speaking, 12.5MB file size) \strong{per day}.
 #' Create your own account at \href{https://cloudconvert.com/register}{cloudconvert} and obtain your own API key, if you want to avoid trouble.
 #' 
-#' @return A HTML file with name \code{output_file} is created. It is ready to be passed into \code{\link{extractcode_from_html}} function.
+#' @return A HTML file with name \code{output_file} is created. It is ready to be passed into \code{\link{extract_code_from_html}} function.
 #' @seealso \code{\link{extract_code_from_html}}, \code{\link{extract_code_from_pdf}}
 #' @export
 
@@ -37,13 +37,13 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(is.null(api_key)) api_key <- "WJMTcdHTp9NMB1JazDUDWZBU39q2UJYWx75KSFpwMZ32GhP500tuk6VVxJPh6i9R"
   base_url <- "https://api.cloudconvert.com/v1/process"
   authorization_header <- httr::add_headers(Authorization = paste0('Bearer ',
-                                                                   api_key_v1))
+                                                                   api_key))
   
   # 1) New process ID
   
   req <- httr::POST(base_url,
               authorization_header,
-              content_type_json(),
+              httr::content_type_json(),
               body = '{
                         "inputformat": "pdf",
                         "outputformat": "html"
@@ -52,18 +52,18 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req)){
     stop(sprintf(
       "Initiation of new process failed [%s]\n%s\n<%s>", 
-      status_code(resp)
+      status_code(req)
     ),
     call. = FALSE)
   } else message('New process initiated')
-  req_content <- httr:content(req)
+  req_content <- httr::content(req)
   process_url <- paste0('https:', req_content$url)
   
   # 2) New conversation
   
   req2 <- httr::POST(process_url,
                authorization_header,
-               content_type_json(),
+               httr::content_type_json(),
                body = paste0(
                       '{
                           "input": "download",
@@ -77,7 +77,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req2)){
     stop(sprintf(
       "Initiation of new conversation failed [%s]\n%s\n<%s>", 
-      status_code(resp)
+      status_code(req2)
     ),
     call. = FALSE)
   } else message('New conversation initiated')
@@ -92,20 +92,20 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req3)){
     stop(sprintf(
       "Conversion failed [%s]\n%s\n<%s>", 
-      status_code(resp)
+      status_code(req3)
     ),
     call. = FALSE)
   } else message('Conversion finished. Downloading...')
   
   # Download data
   download_url <- paste0('https:',
-                         content(req3)$output$url)
+                         httr::content(req3)$output$url)
   req4 <- httr::GET(download_url,
               authorization_header)
   if(httr::http_error(req3)){
     stop(sprintf(
       "Download failed [%s]\n%s\n<%s>", 
-      status_code(resp)
+      status_code(req3)
     ),
     call. = FALSE)
   } else message(paste0('Data downloaded, writing into file ', output_file))

@@ -8,6 +8,9 @@ extract_code_from_pdf(
   input_file_url,
   output_file,
   output_html_file = NULL,
+  filter = TRUE,
+  bibliography = FALSE,
+  console_char = NULL,
   quiet = FALSE,
   api_key = NULL,
   clear = FALSE
@@ -18,7 +21,13 @@ extract_code_from_pdf(
 
 \item{output_file}{name of file to write code to. Must be of R extension.}
 
-\item{output_html_file}{name of HTML file created inside function.
+\item{output_html_file}{name of HTML file created inside function.}
+
+\item{filter}{Boolean. Should all words written with \code{code font} be extracted, or should they be filted first? See Details.}
+
+\item{bibliography}{Boolean. Should the words be extracted from bibliography too?}
+
+\item{console_char}{Single character used in document to indicate start of a command. Assumed to be regex. If supported, from all lines starting with this character the character will be removed and all lines \strong{not} starting with this character will be commented. 
 \itemize{
 \item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
       if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of convertion}, that already took place, and code is extracted from it.}
@@ -33,4 +42,12 @@ extract_code_from_pdf(
 }
 \description{
 Extract code content from PDF file and write it to .R file.
+}
+\details{
+Often the unfiltered results contain unnecessary occurences of words written with \code{code} font. 
+If \code{filter} is set to \code{TRUE}, it is assumed, that we are only intersted in words, that are \strong{not} accompanied by words in different fonts in the same line.
+This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
+}
+\seealso{
+\code{\link{extract_code_from_html}}, \code{\link{convert_pdf_2_html}}
 }

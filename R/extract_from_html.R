@@ -13,6 +13,7 @@
 #' If \code{filter} is set to \code{TRUE}, it is assumed, that we are only intersted in words, that are \strong{not} accompanied by words in different fonts in the same line.
 #' This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
 #' 
+#' @seealso \code{\link{extract_code_from_pdf}}
 #' @import stringi
 #' @import rex
 #' @export

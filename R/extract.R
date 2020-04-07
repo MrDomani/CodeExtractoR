@@ -17,7 +17,9 @@
 #' @param api_key A custom API key obtained from \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}. Make sure to use the key of \strong{version 1}.
 #' @param clear Should the HTML file be removed? If file exists before conversion, it will be removed too - even when \code{output_html_file} was not supplied.
 #' 
-#' @inheritSection extract_code_from_html details
+#' @inherit extract_code_from_html details
+#' 
+#' @seealso \code{\link{extract_code_from_html}}, \code{\link{convert_pdf_2_html}}
 #' @export
 extract_code_from_pdf <- function(input_file_url, output_file, 
                                   output_html_file = NULL, 

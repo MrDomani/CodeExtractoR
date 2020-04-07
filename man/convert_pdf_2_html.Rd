@@ -21,7 +21,7 @@ convert_pdf_2_html(
 \item{api_key}{A custom API key obtained from \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}. Make sure to use the key of \strong{version 1}.}
 }
 \value{
-A HTML file with name \code{output_file} is created. It is ready to be passed into \code{\link{extractcode_from_html}} function.
+A HTML file with name \code{output_file} is created. It is ready to be passed into \code{\link{extract_code_from_html}} function.
 }
 \description{
 This is wrapper around API to \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}.
