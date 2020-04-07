@@ -1,11 +1,15 @@
 context('extract_from_pdf working properly')
 
+library(httptest)
+
 input_file1 <- system.file('extdata/test.pdf', package = 'CodeExtractoR')
 input_file2 <- system.file('extdata/test1.pdf', package = 'CodeExtractoR')
 
 input_url1 <- 'https://journal.r-project.org/archive/2018/RJ-2018-041/RJ-2018-041.pdf'
 input_url2 <- 'https://journal.r-project.org/archive/2018/RJ-2018-053/RJ-2018-053.pdf'
 file.create('I_already_exist.R')
+
+# httptest::start_capturing()
 
 httptest::with_mock_api(
   test_that('Function working properly',{
@@ -71,3 +75,4 @@ httptest::with_mock_API(
 if(file.exists('I_already_exist.R')) file.remove('I_already_exist.R')
 if(file.exists('output1.R')) file.remove('output1.R')
 if(file.exists('output2.R')) file.remove('output2.R')
+if(file.exists('RJ-2018-041.html')) file.remove('RJ-2018-041.html')

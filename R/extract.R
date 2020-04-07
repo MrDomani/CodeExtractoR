@@ -33,10 +33,17 @@ extract_code_from_pdf <- function(input_file_url, output_file,
                                                                             replacement = 'html')
   if(clear && file.exists(output_html_file)) file.remove(output_html_file)
   if(!file.exists(output_html_file))
-    convert_pdf_2_html(input_file_url, output_file = output_html_file, quiet = quiet, api_key = api_key)
+    convert_pdf_2_html(input_file_url, 
+                       output_file = output_html_file, 
+                       quiet = quiet, 
+                       api_key = api_key)
   else
     message(paste0(output_html_file,
                    'exists and clear was FALSE; extracting code from it. See ?extract_code_from_pdf'))
-  extract_code_from_html(output_html_file, output_file, filter = filter, bibliography = bibliography, console_char = console_char)
+  extract_code_from_html(output_html_file, 
+                         output_file, 
+                         filter = filter, 
+                         bibliography = bibliography, 
+                         console_char = console_char)
   if(clear) file.remove(output_html_file)
 }

@@ -27,8 +27,7 @@ A HTML file with name \code{output_file} is created. It is ready to be passed in
 This is wrapper around API to \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}.
 }
 \details{
-By deafult, it uses my API key, which is limited for 25 mins (or, roughly speaking, 12.5MB file size) \strong{per day}.
-Create your own account at \href{https://cloudconvert.com/register}{cloudconvert} and obtain your own API key, if you want to avoid trouble.
+Create your own account at \href{https://cloudconvert.com/register}{cloudconvert} and obtain your own API key, or convert the file(s) manually.
 }
 \seealso{
 \code{\link{extract_code_from_html}}, \code{\link{extract_code_from_pdf}}

@@ -41,6 +41,8 @@ out/*
 
 RJ-*.html
 
+tests/testthat/*.cloudconvert.com/*
+
 R/apiv2.R
 .gitsecret/keys/random_seed
 !*.secret

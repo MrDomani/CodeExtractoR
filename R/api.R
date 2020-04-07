@@ -7,8 +7,8 @@
 #' @param quiet Boolean. Should the method display messages about progress? Errors will be displayed regardless of this option.
 #' @param api_key A custom API key obtained from \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}. Make sure to use the key of \strong{version 1}.
 #' 
-#' @details By deafult, it uses my API key, which is limited for 25 mins (or, roughly speaking, 12.5MB file size) \strong{per day}.
-#' Create your own account at \href{https://cloudconvert.com/register}{cloudconvert} and obtain your own API key, if you want to avoid trouble.
+#' @details 
+#' Create your own account at \href{https://cloudconvert.com/register}{cloudconvert} and obtain your own API key, or convert the file(s) manually.
 #' 
 #' @return A HTML file with name \code{output_file} is created. It is ready to be passed into \code{\link{extract_code_from_html}} function.
 #' @seealso \code{\link{extract_code_from_html}}, \code{\link{extract_code_from_pdf}}
@@ -51,7 +51,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   
   if(httr::http_error(req)){
     stop(sprintf(
-      "Initiation of new process failed [%s]\n%s\n<%s>", 
+      "Initiation of new process failed [%s]", 
       httr::status_code(req)
     ),
     call. = FALSE)
@@ -76,7 +76,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   
   if(httr::http_error(req2)){
     stop(sprintf(
-      "Initiation of new conversation failed [%s]\n%s\n<%s>", 
+      "Initiation of new conversation failed [%s]", 
       httr::status_code(req2)
     ),
     call. = FALSE)
@@ -91,7 +91,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   
   if(httr::http_error(req3)){
     stop(sprintf(
-      "Conversion failed [%s]\n%s\n<%s>", 
+      "Conversion failed [%s]", 
       httr::status_code(req3)
     ),
     call. = FALSE)
@@ -104,7 +104,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
               authorization_header)
   if(httr::http_error(req3)){
     stop(sprintf(
-      "Download failed [%s]\n%s\n<%s>", 
+      "Download failed [%s]", 
       httr::status_code(req3)
     ),
     call. = FALSE)
