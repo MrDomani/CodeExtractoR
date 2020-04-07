@@ -39,3 +39,6 @@ inst/doc
 output*
 
 R/apiv2.R
+.gitsecret/keys/random_seed
+!*.secret
+inst/extdata/api_key.txt

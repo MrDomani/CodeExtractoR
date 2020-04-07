@@ -34,7 +34,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
                                              fixed = 'pdf')
   }
   
-  if(is.null(api_key)) api_key <- "WJMTcdHTp9NMB1JazDUDWZBU39q2UJYWx75KSFpwMZ32GhP500tuk6VVxJPh6i9R"
+  if(is.null(api_key)) api_key <- readLines(system.file('extdata/api_key.txt', package = 'CodeExtractoR'))
   base_url <- "https://api.cloudconvert.com/v1/process"
   authorization_header <- httr::add_headers(Authorization = paste0('Bearer ',
                                                                    api_key))
