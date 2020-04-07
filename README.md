@@ -18,7 +18,8 @@ Ever wanted to extract code from PDF files (posted, for example, at [RJournal](h
 ``` r
 library(CodeExtractoR)
 my_url <- "https://journal.r-project.org/archive/2014/RJ-2014-011/RJ-2014-011.pdf"
-extract_code_from_pdf(my_url, 'output.R')
+api_key <- 'My-API-key'
+extract_code_from_pdf(my_url, 'output.R', api_key = api_key)
 ```
 
 Boom!
