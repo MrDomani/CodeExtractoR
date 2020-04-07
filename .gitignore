@@ -37,6 +37,9 @@ vignettes/*.pdf
 inst/doc
 
 output*
+out/*
+
+RJ-*.html
 
 R/apiv2.R
 .gitsecret/keys/random_seed

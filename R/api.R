@@ -52,7 +52,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req)){
     stop(sprintf(
       "Initiation of new process failed [%s]\n%s\n<%s>", 
-      status_code(req)
+      httr::status_code(req)
     ),
     call. = FALSE)
   } else message('New process initiated')
@@ -77,7 +77,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req2)){
     stop(sprintf(
       "Initiation of new conversation failed [%s]\n%s\n<%s>", 
-      status_code(req2)
+      httr::status_code(req2)
     ),
     call. = FALSE)
   } else message('New conversation initiated')
@@ -92,7 +92,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req3)){
     stop(sprintf(
       "Conversion failed [%s]\n%s\n<%s>", 
-      status_code(req3)
+      httr::status_code(req3)
     ),
     call. = FALSE)
   } else message('Conversion finished. Downloading...')
@@ -105,7 +105,7 @@ convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE
   if(httr::http_error(req3)){
     stop(sprintf(
       "Download failed [%s]\n%s\n<%s>", 
-      status_code(req3)
+      httr::status_code(req3)
     ),
     call. = FALSE)
   } else message(paste0('Data downloaded, writing into file ', output_file))
