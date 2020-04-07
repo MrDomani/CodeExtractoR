@@ -16,7 +16,8 @@
 #' @import stringi
 #' @export
 
-extract_code_from_html <- function(input_file, output_file, 
+extract_code_from_html <- function(input_file, 
+                                   output_file, 
                                    filter = TRUE, 
                                    bibliography = FALSE,
                                    console_char = NULL){
