@@ -18,14 +18,16 @@ Ever wanted to extract code from PDF files (posted, for example, at [RJournal](h
 ``` r
 library(CodeExtractoR)
 my_url <- "https://journal.r-project.org/archive/2014/RJ-2014-011/RJ-2014-011.pdf"
-extract_code_from_pdf(my_url, 'output.R')
+api_key <- 'My-API-key'
+extract_code_from_pdf(my_url, 'output.R', api_key = api_key)
 ```
 
 Boom!
 
 ## Important notes
 
- * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key may be convenient.
+ * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key is necessary.
+ * Alternatively, you may convert the file(s) by hand at [cloudconvert](https://cloudconvert.com/pdf-to-html) and use `extract_code_from_html()` function.
  * PDF file **must** be supplied as URL link, **not** path to file stored in your filesystem.
 
 
