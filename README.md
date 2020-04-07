@@ -23,4 +23,9 @@ extract_code_from_pdf(my_url, 'output.R')
 
 Boom!
 
+## Important notes
+
+ * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key may be convenient.
+ * PDF file **must** be supplied as URL link, **not** path to file stored in your filesystem.
+
 
