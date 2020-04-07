@@ -1,3 +1,4 @@
 ^.git$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^R/apiv2.R$
