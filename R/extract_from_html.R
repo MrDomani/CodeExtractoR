@@ -14,6 +14,7 @@
 #' This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
 #' 
 #' @import stringi
+#' @import rex
 #' @export
 
 extract_code_from_html <- function(input_file, 
