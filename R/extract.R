@@ -27,6 +27,7 @@ extract_code_from_pdf <- function(input_file_url, output_file,
                                   bibliography = FALSE,
                                   console_char = NULL,
                                   quiet = FALSE, api_key = NULL, clear = FALSE){
+  
   if(is.null(output_html_file)) output_html_file <- stri_replace_last_fixed(basename(input_file_url),
                                                                             pattern = 'pdf',
                                                                             replacement = 'html')

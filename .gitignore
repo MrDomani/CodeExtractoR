@@ -37,6 +37,5 @@ vignettes/*.pdf
 inst/doc
 
 output*
-test*.pdf
 
 R/apiv2.R

@@ -15,7 +15,8 @@ Imports: stringi,
          rex
 Suggests: knitr,
           rmarkdown,
-          testthat
+          testthat,
+          httptest
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://MrDomani.github.io/CodeExtractoR/, https://github.com/MrDomani/CodeExtractoR

@@ -31,7 +31,9 @@ extract_code_from_html <- function(input_file,
   if(!toupper(tools::file_ext(output_file)) == 'R') stop(paste0(output_file,
                                                                 ' must be of .R extension'))
   if(!is.logical(filter)) stop(paste0('filter must be logical, not', class(filter)[1]))
+  if(!length(filter) == 1) stop(paste0('filter must be of length 1, not', length(filter)))
   if(!is.logical(bibliography)) stop(paste0('bibliography must be logical, not', class(bibliography)[1]))
+  if(!length(bibliography) == 1) stop(paste0('bibliography must be of length 1, not', length(bibliography)))
   if(!is.null(console_char)){
     if(!is.character(console_char)) stop(paste0('console_char must be character, not', class(console_char)[1]))
     if(!length(console_char) == 1) stop(paste0('console_char must be of length 1, not', length(console_char)))
