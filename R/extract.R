@@ -21,7 +21,8 @@
 #' 
 #' @seealso \code{\link{extract_code_from_html}}, \code{\link{convert_pdf_2_html}}
 #' @export
-extract_code_from_pdf <- function(input_file_url, output_file, 
+extract_code_from_pdf <- function(input_file_url, 
+                                  output_file, 
                                   output_html_file = NULL, 
                                   filter = TRUE,
                                   bibliography = FALSE,
