@@ -11,8 +11,7 @@ License: GPL (>= 2)
 Depends: R (>= 3.5.0)
 Imports: stringi,
          httr,
-         tools,
-         rex
+         tools
 Suggests: knitr,
           rmarkdown,
           testthat,

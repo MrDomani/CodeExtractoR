@@ -15,7 +15,6 @@
 #' 
 #' @seealso \code{\link{extract_code_from_pdf}}
 #' @import stringi
-#' @import rex
 #' @export
 
 extract_code_from_html <- function(input_file, 
@@ -40,15 +39,18 @@ extract_code_from_html <- function(input_file,
   }
   readLines(input_file) -> file_as_chr
   
-  div_regex <- rex('<div',
-                   not('>'),
-                   'y',
-                   not('>'),
-                   'ff',
-                   not('>'),
-                   '>',
-                   not('<div'),
-                   '</div>')
+  # Stworzone pakietem rex
+  # library(rex)
+  # div_regex <- rex('<div',
+  #                  not('>'),
+  #                  'y',
+  #                  not('>'),
+  #                  'ff',
+  #                  not('>'),
+  #                  '>',
+  #                  not('<div'),
+  #                  '</div>')
+  div_regex <- "<div(?:(?!>).)*y(?:(?!>).)*ff(?:(?!>).)*>(?:(?!<div).)*</div>"
   
   body <- file_as_chr[1:length(file_as_chr) >= which(stri_detect_fixed(file_as_chr,
                                               pattern = '<body>'))]
@@ -69,7 +71,8 @@ extract_code_from_html <- function(input_file,
   divs_classes <- stri_extract_first_regex(str = lowest_divs,
                                       pattern = 'class=\"[^"]*\"')
   
-  y_regex <- rex(alnums %if_prev_is% 'y')
+  # y_regex <- rex(alnums %if_prev_is% 'y')
+  y_regex <- "(?:(?<=y)[[:alnum:]]+)"
   
   divs_ys <- stri_extract_first_regex(divs_classes,
                                       pattern = y_regex)
