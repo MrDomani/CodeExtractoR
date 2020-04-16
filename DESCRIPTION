@@ -17,7 +17,8 @@ Suggests:
     rmarkdown,
     testthat,
     httptest,
-    spelling
+    spelling,
+    covr
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://MrDomani.github.io/CodeExtractoR/, https://github.com/MrDomani/CodeExtractoR

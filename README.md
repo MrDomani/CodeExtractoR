@@ -1,9 +1,10 @@
-# CodeExtractoR
-A package to extract code snippets from PDF files.
-
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/MrDomani/CodeExtractoR.svg?branch=master)](https://travis-ci.org/MrDomani/CodeExtractoR)
-  <!-- badges: end -->
+[![Codecov test coverage](https://codecov.io/gh/MrDomani/CodeExtractoR/branch/master/graph/badge.svg)](https://codecov.io/gh/MrDomani/CodeExtractoR?branch=master)
+<!-- badges: end -->
+
+# CodeExtractoR
+A package to extract code snippets from PDF files.
 
 Created with extracting code snippets from articles from [RJournal](https://journal.r-project.org/) and other similar sources.
 
