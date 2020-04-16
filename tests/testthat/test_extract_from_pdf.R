@@ -18,11 +18,6 @@ httptest::with_mock_api(
       file.exists('output1.R')
     })
     expect_gt(file.size('output1.R'), 0)
-    expect_true({
-      extract_code_from_pdf(input_url2, 'output2.R')
-      file.exists('output2.R')
-    })
-    expect_gt(file.size('output2.R'), 0)
   })
 )
 test_that('Incorrect input_file argument caught',{
