@@ -1,0 +1,43 @@
+{
+    "id": "c5e71e9c-57e7-48d0-be5b-eacc930d39fc",
+    "url": "//gwen.infra.cloudconvert.com/process/c5e71e9c-57e7-48d0-be5b-eacc930d39fc",
+    "expire": 1587079003,
+    "percent": 100,
+    "message": "Conversion finished!",
+    "step": "finished",
+    "starttime": 1587035798,
+    "output": {
+        "url": "//gwen.infra.cloudconvert.com/download/~8fea1b1b466feac71e2d336c574356644a5d702e72737c9b226497b72de8c712930920bf3f678545398c2c3b",
+        "filename": "RJ-2018-053.html",
+        "ext": "html",
+        "size": 1827180
+    },
+    "input": {
+        "filename": "RJ-2018-053.pdf",
+        "name": "RJ-2018-053",
+        "ext": "pdf"
+    },
+    "converter": {
+        "mode": "convert",
+        "format": "html",
+        "type": "pdf2htmlex",
+        "options": {
+            "page_range": null,
+            "outline": false,
+            "zoom": 1.5,
+            "page_width": null,
+            "page_height": null,
+            "embed_css": true,
+            "embed_javascript": true,
+            "embed_image": true,
+            "embed_font": true,
+            "split_pages": false,
+            "space_as_offset": false,
+            "simple_html": false,
+            "bg_format": "png"
+        }
+    },
+    "group": "document",
+    "minutes": 1,
+    "endtime": 1587035803
+}
