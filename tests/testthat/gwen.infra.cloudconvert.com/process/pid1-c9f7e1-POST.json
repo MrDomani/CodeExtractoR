@@ -1,0 +1,15 @@
+{
+    "id": "pid1",
+    "url": "//gwen.infra.cloudconvert.com/process/pid1",
+    "expire": 1587036818,
+    "percent": 0,
+    "message": "Preparing process",
+    "step": "input",
+    "starttime": 1587035798,
+    "output": {
+        "url": "//gwen.infra.cloudconvert.com/download/down1"
+    },
+    "input": {
+        "type": "download"
+    }
+}
