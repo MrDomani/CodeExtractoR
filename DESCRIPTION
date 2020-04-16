@@ -12,11 +12,14 @@ Depends: R (>= 3.5.0)
 Imports: stringi,
          httr,
          tools
-Suggests: knitr,
-          rmarkdown,
-          testthat,
-          httptest
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat,
+    httptest,
+    spelling
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://MrDomani.github.io/CodeExtractoR/, https://github.com/MrDomani/CodeExtractoR
 BugReports: https://github.com/MrDomani/CodeExtractoR/issues
+Language: en-US
