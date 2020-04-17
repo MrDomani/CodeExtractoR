@@ -81,26 +81,42 @@ extract_code_from_html <- function(input_file,
   
   ys <- base::strtoi(divs_ys, base = 16)
   
+  # Uwaga: równa wartość y nie znaczy, że w dokumencie elementy rzeczywiście znajdują się koło siebie. Np nagłówek
+  
+  y_diffs <- diff(ys)
+  y_diffs[abs(y_diffs) >= 1] <- 1
+  y_classes <- cumsum(c(1,y_diffs))
+  
   # Dzielimy wektor ze względu na wysokość
   
   divs_splited <- split(lowest_divs,
-                        f = factor(ys))
+                        f = factor(y_classes))
   
   # Wyciągamy wszystko, co siedzi w środku divów z klasą z czcionką ff4 lub ff9
-  lapply(divs_splited,
+  l <- lapply(divs_splited,
          function(str) stri_detect_regex(str,
-                                         pattern = '<div[^>]*class=\"[^"]*ff[49][^"]*\"[^>]*>')) -> l
+                                         pattern = '<div[^>]*class=\"[^"]*ff[49][^"]*\"[^>]*>'))
   if(filter){
-    divs <- unlist(divs_splited[sapply(l, all)])
+    # Jeśli pojawią się spany z innymi czcionkami, to omijamy
+    good_divs <- sapply(l ,all)
+    divs <- unlist(divs_splited[good_divs])
+    # divs <- unlist(divs_splited[good_divs & !wrong_spans])
   } else
     divs <- unlist(divs_splited)[unlist(l)]
+  
   # Czyścimy z divów na początku i na końcu:
   without_divs <- stri_replace_all_regex(divs,
                                          pattern =  c('^<div[^>]*>',
                                                       '</div>$'),
                                          replacement = c('',''),
                                          vectorize_all = FALSE)
-  #Czyścimy z tagów 'span'
+  
+  if(filter){
+    wrong_spans <- stri_detect_regex(without_divs,
+                            pattern = '<span[^>]*class=\"[^"]*ff[^49][^"]*\"[^>]*>')
+    without_divs <- without_divs[!wrong_spans]
+  }
+  # Czyścimy z tagów 'span'
   without_spans <- stri_replace_all_regex(without_divs,
                                           pattern = c('<span[^>]*>',
                                                      '</span>'),
@@ -122,11 +138,11 @@ extract_code_from_html <- function(input_file,
                                                vectorize_all = FALSE)
   with_correct_chars -> final_vector
   if(!is.null(console_char)){
-    pattern <- paste0('^', console_char)
+    pattern <- paste0('^\\s*((', console_char, ')|[+])\\s*')
     is_starting <- stri_detect_regex(with_correct_chars,
                                      pattern)
     final_vector[is_starting] <- stri_replace_first_regex(with_correct_chars[is_starting],
-                                                          pattern = console_char,
+                                                          pattern = pattern,
                                                           replacement = '')
     final_vector[!is_starting] <- paste0('# ', with_correct_chars[!is_starting])
   }
