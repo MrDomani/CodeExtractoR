@@ -30,8 +30,8 @@ extract_code_from_html(
 Search for code snippets, based on their unique font. Some extra may be extracted (like in-line mentions of functions or HTTP links).
 }
 \details{
-Often the unfiltered results contain unnecessary occurences of words written with \code{code} font. 
-If \code{filter} is set to \code{TRUE}, it is assumed, that we are only intersted in words, that are \strong{not} accompanied by words in different fonts in the same line.
+Often the unfiltered results contain unnecessary occurrences of words written with \code{code} font. 
+If \code{filter} is set to \code{TRUE}, it is assumed, that we are only interested in words, that are \strong{not} accompanied by words in different fonts in the same line.
 This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
 }
 \seealso{

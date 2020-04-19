@@ -24,7 +24,7 @@ extract_code_from_pdf(
 
 \item{output_html_file}{name of HTML file created inside function.}
 
-\item{filter}{Boolean. Should all words written with \code{code font} be extracted, or should they be filted first? See Details.}
+\item{filter}{Boolean. Should all words written with \code{code font} be extracted, or should they be filtered first? See Details.}
 
 \item{bibliography}{Boolean. Should the words be extracted from bibliography too?}
 
@@ -39,7 +39,7 @@ extract_code_from_pdf(
 \item{overwrite}{Boolean - should the files created throughout the function (.R and .html) be overwritten?
 \itemize{
 \item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
-      if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of convertion}, that already took place, and code is extracted from it.}
+      if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of conversion}, that already took place, and code is extracted from it.}
 \item{if supplied and a file of that name exists, it is assumed to be a \strong{mistake}.}     
 }}
 }
@@ -47,8 +47,8 @@ extract_code_from_pdf(
 Extract code content from PDF file and write it to .R file.
 }
 \details{
-Often the unfiltered results contain unnecessary occurences of words written with \code{code} font. 
-If \code{filter} is set to \code{TRUE}, it is assumed, that we are only intersted in words, that are \strong{not} accompanied by words in different fonts in the same line.
+Often the unfiltered results contain unnecessary occurrences of words written with \code{code} font. 
+If \code{filter} is set to \code{TRUE}, it is assumed, that we are only interested in words, that are \strong{not} accompanied by words in different fonts in the same line.
 This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
 }
 \seealso{
