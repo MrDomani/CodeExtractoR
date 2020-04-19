@@ -8,15 +8,23 @@ file.create('I_already_exist.R')
 
 test_that('Function working properly',{
   expect_true({
+    extract_code_from_html(input_file1)
+    file.exists('RJ-2018-041.R')
+  })
+  expect_gt(file.size('RJ-2018-041.R'), 0)
+  expect_true({
+    extract_code_from_html(input_file2)
+    file.exists('RJ-2018-053.R')
+  })
+  expect_gt(file.size('RJ-2018-053.R'), 0)
+})
+
+test_that('Output_file argument working',{
+  expect_true({
     extract_code_from_html(input_file1, 'output1.R')
     file.exists('output1.R')
   })
   expect_gt(file.size('output1.R'), 0)
-  expect_true({
-    extract_code_from_html(input_file2, 'output2.R')
-    file.exists('output2.R')
-  })
-  expect_gt(file.size('output2.R'), 0)
 })
 
 test_that('Incorrect input_file argument caught',{
@@ -62,3 +70,5 @@ test_that('Incorrect console_char argument caught',{
 if(file.exists('I_already_exist.R')) file.remove('I_already_exist.R')
 if(file.exists('output1.R')) file.remove('output1.R')
 if(file.exists('output2.R')) file.remove('output2.R')
+if(file.exists('RJ-2018-041.R')) file.remove('RJ-2018-041.R')
+if(file.exists('RJ-2018-053.R')) file.remove('RJ-2018-053.R')

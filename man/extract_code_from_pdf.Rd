@@ -6,7 +6,7 @@
 \usage{
 extract_code_from_pdf(
   input_file_url,
-  output_file,
+  output_file = NULL,
   output_html_file = NULL,
   filter = TRUE,
   bibliography = FALSE,
@@ -19,7 +19,7 @@ extract_code_from_pdf(
 \arguments{
 \item{input_file_url}{A \strong{URL} to pdf file to process. Do \strong{not} supply path to file in your filesystem.}
 
-\item{output_file}{name of file to write code to. Must be of R extension.}
+\item{output_file}{name of file to write code to. Must be of R extension. By default its name is extracted from \code{input_file_url}.}
 
 \item{output_html_file}{name of HTML file created inside function.}
 

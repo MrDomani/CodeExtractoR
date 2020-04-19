@@ -6,7 +6,7 @@
 \usage{
 extract_code_from_html(
   input_file,
-  output_file,
+  output_file = NULL,
   filter = TRUE,
   bibliography = FALSE,
   console_char = NULL
@@ -15,7 +15,7 @@ extract_code_from_html(
 \arguments{
 \item{input_file}{name of file to extract code from. Must be of HTML extension \strong{and} be produced by converter using pdf2htmlex (like \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}).}
 
-\item{output_file}{name of file to write code to. Must be of R extension.}
+\item{output_file}{name of file to write code to. Must be of R extension. By default its name is extracted from \code{input_file}.}
 
 \item{filter}{Boolean. Should all words written with \code{code font} be extracted, or should they be filted first? See Details.}
 

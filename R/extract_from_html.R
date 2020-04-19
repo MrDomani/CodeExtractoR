@@ -149,8 +149,8 @@ extract_code_from_html <- function(input_file,
 
 check_output_file <- function(output_file, input_file){
   if(is.null(output_file))
-    output_file <- stri_replace_last_fixed(basename(input_file_url),
-                                   pattern = 'pdf',
+    output_file <- stri_replace_last_fixed(basename(input_file),
+                                   pattern = 'html',
                                    replacement = 'R')
   else{
     if(!toupper(tools::file_ext(output_file)) == 'R') stop(paste0(output_file,
