@@ -15,7 +15,10 @@
 #' @export
 
 
-convert_pdf_2_html <- function(input_file_url, output_file = NULL, quiet = FALSE, api_key = NULL){
+convert_pdf_2_html <- function(input_file_url, 
+                               output_file = NULL, 
+                               quiet = FALSE, 
+                               api_key = NULL){
   input_file_name <- basename(input_file_url)
   if(file.exists(input_file_url)) stop('input_file_url must be URL to file, available online. See ?convert_pdf_to_html')
   if(tolower(tools::file_ext(input_file_name)) != 'pdf') stop(paste0('Input file must be of pdf extension, not', 
