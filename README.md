@@ -1,6 +1,7 @@
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/MrDomani/CodeExtractoR.svg?branch=master)](https://travis-ci.org/MrDomani/CodeExtractoR)
 [![Codecov test coverage](https://codecov.io/gh/MrDomani/CodeExtractoR/branch/master/graph/badge.svg)](https://codecov.io/gh/MrDomani/CodeExtractoR?branch=master)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/MrDomani/CodeExtractoR?branch=master&svg=true)](https://ci.appveyor.com/project/MrDomani/CodeExtractoR)
 <!-- badges: end -->
 
 # CodeExtractoR
