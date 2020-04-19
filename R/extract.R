@@ -7,7 +7,7 @@
 #' @param filter Boolean. Should all words written with \code{code font} be extracted, or should they be filted first? See Details.
 #' @param bibliography Boolean. Should the words be extracted from bibliography too?
 #' @param console_char Single character used in document to indicate start of a command. Assumed to be regex. If supported, from all lines starting with this character the character will be removed and all lines \strong{not} starting with this character will be commented. 
-
+#' @param overwrite Boolean - should the files created throughout the function (.R and .html) be overwritten?
 #' \itemize{
 #' \item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
 #'       if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of convertion}, that already took place, and code is extracted from it.}
@@ -29,7 +29,8 @@ extract_code_from_pdf <- function(input_file_url,
                                   console_char = NULL,
                                   quiet = FALSE, 
                                   api_key = NULL, 
-                                  clear = FALSE){
+                                  clear = FALSE,
+                                  overwrite = FALSE){
   
   if(is.null(output_html_file)) output_html_file <- stri_replace_last_fixed(basename(input_file_url),
                                                                             pattern = 'pdf',
@@ -39,7 +40,8 @@ extract_code_from_pdf <- function(input_file_url,
     convert_pdf_2_html(input_file_url, 
                        output_file = output_html_file, 
                        quiet = quiet, 
-                       api_key = api_key)
+                       api_key = api_key,
+                       overwrite = overwrite)
   else
     message(paste0(output_html_file,
                    'exists and clear was FALSE; extracting code from it. See ?extract_code_from_pdf'))
@@ -47,6 +49,7 @@ extract_code_from_pdf <- function(input_file_url,
                          output_file, 
                          filter = filter, 
                          bibliography = bibliography, 
-                         console_char = console_char)
+                         console_char = console_char,
+                         overwrite = overwrite)
   if(clear) file.remove(output_html_file)
 }

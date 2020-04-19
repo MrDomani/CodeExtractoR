@@ -67,6 +67,15 @@ test_that('Incorrect console_char argument caught',{
                                       console_char = LETTERS[1:3]))
 })
 
+
+test_that('Overwrite argument works properly',{
+  expect_gt({extract_code_from_html(input_file = input_file1,
+                                output_file = 'I_already_exist.R',
+                                overwrite = TRUE)
+    file.size('I_already_exist.R')
+  },0)
+})
+
 if(file.exists('I_already_exist.R')) file.remove('I_already_exist.R')
 if(file.exists('output1.R')) file.remove('output1.R')
 if(file.exists('output2.R')) file.remove('output2.R')

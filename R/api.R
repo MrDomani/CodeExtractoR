@@ -6,6 +6,7 @@
 #' @param output_file A name of file to write .html to. Must be of .html extension. By default, the name of the file is extracted from \code{input_file_url}.
 #' @param quiet Boolean. Should the method display messages about progress? Errors will be displayed regardless of this option.
 #' @param api_key A custom API key obtained from \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}. Make sure to use the key of \strong{version 1}.
+#' @param overwrite Boolean. Should the .html file be overwritten?
 #' 
 #' @details 
 #' Create your own account at \href{https://cloudconvert.com/register}{cloudconvert} and obtain your own API key, or convert the file(s) manually.
@@ -18,7 +19,8 @@
 convert_pdf_2_html <- function(input_file_url, 
                                output_file = NULL, 
                                quiet = FALSE, 
-                               api_key = NULL){
+                               api_key = NULL,
+                               overwrite = FALSE){
   input_file_name <- basename(input_file_url)
   if(file.exists(input_file_url)) stop('input_file_url must be URL to file, available online. See ?convert_pdf_to_html')
   if(tolower(tools::file_ext(input_file_name)) != 'pdf') stop(paste0('Input file must be of pdf extension, not', 
@@ -28,7 +30,10 @@ convert_pdf_2_html <- function(input_file_url,
     if(tolower(tools::file_ext(output_file)) != 'html') stop(paste0('Output file must be of html extension, not', 
                                                                   tools::file_ext(output_file),
                                                                   '.'))
-    if(file.exists(output_file)) stop(paste0(output_file), 'already exists.')
+    if(file.exists(output_file)){
+      if(overwrite) file.remove(output_file)
+      else stop(paste0(output_file), ' already exists.')
+    }
   }
   else{
     output_file <- stringi::stri_replace_last(input_file_name,

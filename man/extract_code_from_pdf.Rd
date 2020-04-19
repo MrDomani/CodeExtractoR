@@ -13,7 +13,8 @@ extract_code_from_pdf(
   console_char = NULL,
   quiet = FALSE,
   api_key = NULL,
-  clear = FALSE
+  clear = FALSE,
+  overwrite = FALSE
 )
 }
 \arguments{
@@ -27,18 +28,20 @@ extract_code_from_pdf(
 
 \item{bibliography}{Boolean. Should the words be extracted from bibliography too?}
 
-\item{console_char}{Single character used in document to indicate start of a command. Assumed to be regex. If supported, from all lines starting with this character the character will be removed and all lines \strong{not} starting with this character will be commented. 
-\itemize{
-\item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
-      if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of convertion}, that already took place, and code is extracted from it.}
-\item{if supplied and a file of that name exists, it is assumed to be a \strong{mistake}.}     
-}}
+\item{console_char}{Single character used in document to indicate start of a command. Assumed to be regex. If supported, from all lines starting with this character the character will be removed and all lines \strong{not} starting with this character will be commented.}
 
 \item{quiet}{Boolean. Should the method display messages about progress? Errors will be displayed regardless of this option.}
 
 \item{api_key}{A custom API key obtained from \href{https://cloudconvert.com/pdf-to-html}{cloudconvert}. Make sure to use the key of \strong{version 1}.}
 
 \item{clear}{Should the HTML file be removed? If file exists before conversion, it will be removed too - even when \code{output_html_file} was not supplied.}
+
+\item{overwrite}{Boolean - should the files created throughout the function (.R and .html) be overwritten?
+\itemize{
+\item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
+      if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of convertion}, that already took place, and code is extracted from it.}
+\item{if supplied and a file of that name exists, it is assumed to be a \strong{mistake}.}     
+}}
 }
 \description{
 Extract code content from PDF file and write it to .R file.

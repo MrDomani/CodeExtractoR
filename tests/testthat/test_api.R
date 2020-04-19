@@ -38,6 +38,15 @@ httptest::with_mock_API(
                  regexp = 'exist')
   })
 )
+httptest::with_mock_API(
+  test_that('Overwrite argument works properly',{
+    expect_gt({convert_pdf_2_html(input_file = input_url1,
+                                    output_file = 'I_already_exist.html',
+                                    overwrite = TRUE)
+      file.size('I_already_exist.html')
+      },0)
+  })
+)
 # httptest::stop_capturing()
   
 if(file.exists('I_already_exist.html')) file.remove('I_already_exist.html')

@@ -20,6 +20,7 @@ httptest::with_mock_api(
     expect_gt(file.size('output1.R'), 0)
   })
 )
+
 test_that('Incorrect input_file argument caught',{
   expect_error(extract_code_from_pdf(input_file = input_file1,
                                       output_file = 'output1.R'))

@@ -7,6 +7,7 @@
 #' @param filter Boolean. Should all words written with \code{code font} be extracted, or should they be filted first? See Details.
 #' @param bibliography Boolean. Should the words be extracted from bibliography too?
 #' @param console_char Single character used in document to indicate start of a command. Assumed to be regex. If supported, from all lines starting with this character the character will be removed and all lines \strong{not} starting with this character will be commented. 
+#' @param overwrite Boolean. Should the output file (.R) be overwritten?
 #' 
 #' @details
 #' Often the unfiltered results contain unnecessary occurences of words written with \code{code} font. 
@@ -21,12 +22,13 @@ extract_code_from_html <- function(input_file,
                                    output_file = NULL, 
                                    filter = TRUE, 
                                    bibliography = FALSE,
-                                   console_char = NULL){
+                                   console_char = NULL,
+                                   overwrite = FALSE){
   
   if(!file.exists(input_file)) stop(paste0(input_file, ' does not exist'))
   if(!tolower(tools::file_ext(input_file)) == 'html') stop(paste0(input_file,
                                                                 'is not off .html extension'))
-  output_file <- check_output_file(output_file, input_file)
+  output_file <- check_output_file(output_file, input_file, overwrite)
   if(!is.logical(filter)) stop(paste0('filter must be logical, not', class(filter)[1]))
   if(!length(filter) == 1) stop(paste0('filter must be of length 1, not', length(filter)))
   if(!is.logical(bibliography)) stop(paste0('bibliography must be logical, not', class(bibliography)[1]))
@@ -147,7 +149,7 @@ extract_code_from_html <- function(input_file,
   writeLines(final_vector, output_file)  
 }
 
-check_output_file <- function(output_file, input_file){
+check_output_file <- function(output_file, input_file, overwrite){
   if(is.null(output_file))
     output_file <- stri_replace_last_fixed(basename(input_file),
                                    pattern = 'html',
@@ -156,6 +158,9 @@ check_output_file <- function(output_file, input_file){
     if(!toupper(tools::file_ext(output_file)) == 'R') stop(paste0(output_file,
                                                                   ' must be of .R extension'))    
   }
-  if(file.exists(output_file)) stop(paste0(output_file, ' exists!'))
+  if(file.exists(output_file)){
+    if(overwrite) file.remove(output_file)
+    else stop(paste0(output_file, ' exists!'))
+  }
   output_file
 }
