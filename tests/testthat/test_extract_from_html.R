@@ -102,6 +102,6 @@ test_that('Overwrite argument works properly',{
 if(file.exists('I_already_exist.R')) file.remove('I_already_exist.R')
 if(file.exists('output1.R')) file.remove('output1.R')
 if(file.exists('output2.R')) file.remove('output2.R')
-# if(file.exists('output3.R')) file.remove('output3.R')
+if(file.exists('output3.R')) file.remove('output3.R')
 if(file.exists('RJ-2018-041.R')) file.remove('RJ-2018-041.R')
 if(file.exists('RJ-2018-053.R')) file.remove('RJ-2018-053.R')
