@@ -1,7 +1,20 @@
 context('extract_from_html working properly')
 
+library(stringi)
 input_file1 <- system.file('extdata/RJ-2018-041.html', package = 'CodeExtractoR')
 input_file2 <- system.file('extdata/RJ-2018-053.html', package = 'CodeExtractoR')
+
+input_file3 <- system.file('extdata/RJ-2019-017.html', package = 'CodeExtractoR')
+original_output <- system.file('extdata/RJ-2019-017.R', package = 'CodeExtractoR')
+
+normalize_file_output <- function(str){
+  # Olewamy komentarze
+  str <- stri_extract_first_regex(str,
+                           pattern = '^\\s*[^#].*$')
+  # Olewamy puste linie
+  str <- str[str != '']
+  str
+}
 
 if(file.exists('I_do_not_exist.html')) file.remove('I_do_not_exist.html')
 file.create('I_already_exist.R')
@@ -17,6 +30,14 @@ test_that('Function working properly',{
     file.exists('RJ-2018-053.R')
   })
   expect_gt(file.size('RJ-2018-053.R'), 0)
+})
+
+test_that('Output_file identical to supplementary material',{
+  expect_equal({
+    extract_code_from_html(input_file3, 'output3.R')
+    normalize_file_output(readLines('output3.R'))
+  },
+  normalize_file_output(readLines(original_output)))
 })
 
 test_that('Output_file argument working',{
