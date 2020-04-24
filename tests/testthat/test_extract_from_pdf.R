@@ -9,12 +9,14 @@ input_url1 <- 'https://journal.r-project.org/archive/2018/RJ-2018-041/RJ-2018-04
 input_url2 <- 'https://journal.r-project.org/archive/2018/RJ-2018-053/RJ-2018-053.pdf'
 file.create('I_already_exist.R')
 
+api_key <- '1234567890'
+
 # httptest::start_capturing()
 
 httptest::with_mock_api(
   test_that('Function working properly',{
     expect_true({
-      extract_code_from_pdf(input_url1, 'output1.R')
+      extract_code_from_pdf(input_url1, 'output1.R', api_key = api_key)
       file.exists('output1.R')
     })
     expect_gt(file.size('output1.R'), 0)
@@ -23,16 +25,19 @@ httptest::with_mock_api(
 
 test_that('Incorrect input_file argument caught',{
   expect_error(extract_code_from_pdf(input_file = input_file1,
-                                      output_file = 'output1.R'))
+                                      output_file = 'output1.R',
+                                     api_key = api_key))
   
 })
 
 httptest::with_mock_api(
   test_that('Incorrect output_file argument caught',{
     expect_error(extract_code_from_pdf(input_file = input_url1,
-                                        output_file = 'output.txt'))
+                                        output_file = 'output.txt',
+                                       api_key = api_key))
     expect_error(extract_code_from_pdf(input_file = input_url1,
-                                        output_file = 'I_already_exist.R'))
+                                        output_file = 'I_already_exist.R',
+                                       api_key = api_key))
   })
 )
 
@@ -40,10 +45,12 @@ httptest::with_mock_API(
   test_that('Incorrect filter argument caught',{
     expect_error(extract_code_from_pdf(input_file = input_url1,
                                         output_file = 'output.R',
-                                        filter = 'ABC'))
+                                        filter = 'ABC',
+                                       api_key = api_key))
     expect_error(extract_code_from_pdf(input_file = input_url1,
                                         output_file = 'output.R',
-                                        filter = c(TRUE, FALSE)))
+                                        filter = c(TRUE, FALSE),
+                                       api_key = api_key))
   })
 )
 
@@ -51,10 +58,12 @@ httptest::with_mock_api(
   test_that('Incorrect bibliography argument caught',{
     expect_error(extract_code_from_pdf(input_file = input_url1,
                                         output_file = 'output.R',
-                                        bibliography = 'ABC'))
+                                        bibliography = 'ABC',
+                                       api_key = api_key))
     expect_error(extract_code_from_pdf(input_file = input_url1,
                                         output_file = 'output.R',
-                                        bibliography = c(TRUE, FALSE)))
+                                        bibliography = c(TRUE, FALSE),
+                                       api_key = api_key))
   })
 )
 
@@ -62,10 +71,12 @@ httptest::with_mock_API(
   test_that('Incorrect console_char argument caught',{
     expect_error(extract_code_from_pdf(input_file = input_url1,
                                         output_file = 'output.R',
-                                        console_char = 123))
+                                        console_char = 123,
+                                       api_key = api_key))
     expect_error(extract_code_from_pdf(input_file = input_url1,
                                         output_file = 'output.R',
-                                        console_char = LETTERS[1:3]))
+                                        console_char = LETTERS[1:3],
+                                       api_key = api_key))
   })
 )
 if(file.exists('I_already_exist.R')) file.remove('I_already_exist.R')

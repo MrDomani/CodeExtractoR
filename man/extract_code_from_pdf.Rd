@@ -22,7 +22,12 @@ extract_code_from_pdf(
 
 \item{output_file}{name of file to write code to. Must be of R extension. By default its name is extracted from \code{input_file_url}.}
 
-\item{output_html_file}{name of HTML file created inside function.}
+\item{output_html_file}{name of HTML file created inside function.
+\itemize{
+\item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
+      if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of conversion}, that already took place, and code is extracted from it.}
+\item{if supplied and a file of that name exists, it is assumed to be a \strong{mistake}.}     
+}}
 
 \item{filter}{Boolean. Should all words written with \code{code font} be extracted, or should they be filtered first? See Details.}
 
@@ -36,12 +41,7 @@ extract_code_from_pdf(
 
 \item{clear}{Should the HTML file be removed? If file exists before conversion, it will be removed too - even when \code{output_html_file} was not supplied.}
 
-\item{overwrite}{Boolean - should the files created throughout the function (.R and .html) be overwritten?
-\itemize{
-\item{if \code{NULL}, then the name of the file is extracted from the \code{input_file_url} and the file is created in working directory.
-      if it exists and \code{clear} is \code{FALSE} then it is assumed to be \strong{product of conversion}, that already took place, and code is extracted from it.}
-\item{if supplied and a file of that name exists, it is assumed to be a \strong{mistake}.}     
-}}
+\item{overwrite}{Boolean - should the files created throughout the function (.R and .html) be overwritten?}
 }
 \description{
 Extract code content from PDF file and write it to .R file.
