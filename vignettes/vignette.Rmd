@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+## Introduction
 
 A number of articles written in PDF files contain code snippets. These are usually just a method to achieve results presented in the paper. However, a curious user might want to run these codes for himself - to replicate the results, experiment for themselves or for other reasons. Unfortunately, the process of extracting code manually might prove long, boring and prone to mistakes. Some articles are submitted with *supplementary material* with code files, although (in case of [RJournal](https://journal.r-project.org/)) it's just a recent development:
 
@@ -22,7 +22,7 @@ A number of articles written in PDF files contain code snippets. These are usual
 
 For articles published longer ago, the extraction of the code is left to the user.
 
-# Package CodeExtractoR
+## Package CodeExtractoR
 
 With package `CodeExtracoR` the code may be extracted in a manner of seconds:
 
@@ -43,7 +43,7 @@ extract_code_from_html('input.html', 'output.R')
 
 Package will work only on HTML files created with [cloudconvert](https://cloudconvert.com/pdf-to-html) or any other converter using [pdf2htmlex](https://github.com/coolwanglu/pdf2htmlEX). 
 
-# Customization
+## Customization
 
 Most of the code commands start with a character (like '>' or 'R>'). You may supply the `console_char` argument to `extract_*` function specifing it. Then, all the lines starting with it (or +) will be treated as lines of code *to run* and all the others as output of the code - and they will be automatically commented out.
 
