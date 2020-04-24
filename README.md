@@ -35,5 +35,9 @@ Boom!
  * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key is necessary.
  * Alternatively, you may convert the file(s) by hand at [cloudconvert](https://cloudconvert.com/pdf-to-html) and use `extract_code_from_html()` function.
  * PDF file **must** be supplied as URL link, **not** path to file stored in your filesystem.
+ 
+ ## P.S.
 
+Since 2016 authors started providing *supplementary materials* to their articles published in **RJournal**. Fortunately, this good practice is gaining popularity. Still, for elder articles, package `CodeExtractoR` might come in handy. 
 
+![](SMFrac.jpeg)
