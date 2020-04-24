@@ -9,11 +9,13 @@ original_output <- system.file('extdata/RJ-2019-017.R', package = 'CodeExtractoR
 
 normalize_file_output <- function(str){
   # Olewamy komentarze
-  str <- stri_extract_first_regex(str,
-                           pattern = '^\\s*[^#].*$')
+  str <- stri_replace_all_regex(str,
+                                pattern = '^\\s*#.*$',
+                                replacement = '')
   # Olewamy puste linie
   str <- str[str != '']
-  str
+  # przycinamy
+  stri_trim_both(str)
 }
 
 if(file.exists('I_do_not_exist.html')) file.remove('I_do_not_exist.html')
@@ -34,7 +36,7 @@ test_that('Function working properly',{
 
 test_that('Output_file identical to supplementary material',{
   expect_equal({
-    extract_code_from_html(input_file3, 'output3.R')
+    extract_code_from_html(input_file3, 'output3.R', console_char = '>')
     normalize_file_output(readLines('output3.R'))
   },
   normalize_file_output(readLines(original_output)))
@@ -100,5 +102,6 @@ test_that('Overwrite argument works properly',{
 if(file.exists('I_already_exist.R')) file.remove('I_already_exist.R')
 if(file.exists('output1.R')) file.remove('output1.R')
 if(file.exists('output2.R')) file.remove('output2.R')
+# if(file.exists('output3.R')) file.remove('output3.R')
 if(file.exists('RJ-2018-041.R')) file.remove('RJ-2018-041.R')
 if(file.exists('RJ-2018-053.R')) file.remove('RJ-2018-053.R')
