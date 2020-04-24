@@ -12,7 +12,6 @@ Created with extracting code snippets from articles from [RJournal](https://jour
 Mostly for purposes related to Research Workshops subject on Warsaw University of Technology.
 
 ## Install
-Be aware, that it is still in development.
 ``` r
 # install.packages("devtools")
 devtools::install_github("MrDomani/CodeExtractoR")
@@ -34,7 +33,7 @@ Boom!
 
  * Package uses API to [cloudconvert](https://cloudconvert.com/pdf-to-html). Obtaining your own API key is necessary.
  * Alternatively, you may convert the file(s) by hand at [cloudconvert](https://cloudconvert.com/pdf-to-html) and use `extract_code_from_html()` function.
- * PDF file **must** be supplied as URL link, **not** path to file stored in your filesystem.
+ * PDF file **must** be supplied as URL link, **not** path to file stored in your filesystem. The package contains a `RJ_links` dataset with basic information about articles published in RJournal until 2020.
  
  ## P.S.
 
