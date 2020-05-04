@@ -113,7 +113,7 @@ extract_code_from_html <- function(input_file,
   
   if(filter){
     wrong_spans <- stri_detect_regex(without_divs,
-                            pattern = '<span[^>]*class=\"[^"]*ff[^49][^"]*\"[^>]*>')
+                            pattern = '<span[^>]*class=\"[^"]*ff[^45789b][^"]*\"[^>]*>')
     without_divs <- without_divs[!wrong_spans]
   }
   # Czyścimy z tagów 'span'
