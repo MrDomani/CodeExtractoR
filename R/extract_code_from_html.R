@@ -95,7 +95,7 @@ extract_code_from_html <- function(input_file,
   # Wyciągamy wszystko, co siedzi w środku divów z klasą z czcionką ff4 lub ff9
   l <- lapply(divs_splited,
          function(str) stri_detect_regex(str,
-                                         pattern = '<div[^>]*class=\"[^"]*ff[45789b][^"]*\"[^>]*>'))
+                                         pattern = '<div[^>]*class=\"[^"]*ff[45789ab][^"]*\"[^>]*>'))
   if(filter){
     # Jeśli pojawią się spany z innymi czcionkami, to omijamy
     good_divs <- sapply(l ,all)
@@ -113,7 +113,7 @@ extract_code_from_html <- function(input_file,
   
   if(filter){
     wrong_spans <- stri_detect_regex(without_divs,
-                            pattern = '<span[^>]*class=\"[^"]*ff[^45789b][^"]*\"[^>]*>')
+                            pattern = '<span[^>]*class=\"[^"]*ff[^45789ab][^"]*\"[^>]*>')
     without_divs <- without_divs[!wrong_spans]
   }
   # Czyścimy z tagów 'span'
