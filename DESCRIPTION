@@ -19,6 +19,7 @@ Suggests:
     httptest,
     spelling,
     covr
+LazyData: true
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://MrDomani.github.io/CodeExtractoR/, https://github.com/MrDomani/CodeExtractoR
