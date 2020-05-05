@@ -43,11 +43,16 @@ extract_code_from_pdf(
 
 \item{overwrite}{Boolean - should the files created throughout the function (.R and .html) be overwritten?}
 }
+\value{
+An .R file is created, containing text \strong{suspected} to be code. Unfortunately, various articles use various fonts for the code included.
+The texts in .R file are grouped based on their font in the \code{input_file}. 
+User is encouraged to compare the results with the article.
+}
 \description{
 Extract code content from PDF file and write it to .R file.
 }
 \details{
-Often the unfiltered results contain unnecessary occurrences of words written with \code{code} font. 
+Often the unfiltered results contain unnecessary occurrences of words written with \code{code} font.
 If \code{filter} is set to \code{TRUE}, it is assumed, that we are only interested in words, that are \strong{not} accompanied by words in different fonts in the same line.
 This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
 }

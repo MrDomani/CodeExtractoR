@@ -43,6 +43,8 @@ extract_code_from_html('input.html', 'output.R')
 
 Package will work only on HTML files created with [cloudconvert](https://cloudconvert.com/pdf-to-html) or any other converter using [pdf2htmlex](https://github.com/coolwanglu/pdf2htmlEX). 
 
+Additionally, in .R file created, containing text is  *suspected* to be code. Unfortunately, various articles use various fonts for the code included. The texts in .R file are grouped based on their font in the `input_file`. User is encouraged to compare the results with the article.
+
 ## Customization
 
 Most of the code commands start with a character (like '>' or 'R>'). You may supply the `console_char` argument to `extract_*` function specifing it. Then, all the lines starting with it (or +) will be treated as lines of code *to run* and all the others as output of the code - and they will be automatically commented out.

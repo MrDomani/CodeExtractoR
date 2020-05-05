@@ -19,6 +19,7 @@
 #' @param clear Should the HTML file be removed? If file exists before conversion, it will be removed too - even when \code{output_html_file} was not supplied.
 #' 
 #' @inherit extract_code_from_html details
+#' @inherit extract_code_from_html return
 #' 
 #' @seealso \code{\link{extract_code_from_html}}, \code{\link{convert_pdf_2_html}}
 #' @export

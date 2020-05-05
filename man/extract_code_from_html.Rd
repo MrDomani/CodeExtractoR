@@ -26,11 +26,16 @@ extract_code_from_html(
 
 \item{overwrite}{Boolean. Should the output file (.R) be overwritten?}
 }
+\value{
+An .R file is created, containing text \strong{suspected} to be code. Unfortunately, various articles use various fonts for the code included.
+The texts in .R file are grouped based on their font in the \code{input_file}. 
+User is encouraged to compare the results with the article.
+}
 \description{
 Search for code snippets, based on their unique font. Some extra may be extracted (like in-line mentions of functions or HTTP links).
 }
 \details{
-Often the unfiltered results contain unnecessary occurrences of words written with \code{code} font. 
+Often the unfiltered results contain unnecessary occurrences of words written with \code{code} font.
 If \code{filter} is set to \code{TRUE}, it is assumed, that we are only interested in words, that are \strong{not} accompanied by words in different fonts in the same line.
 This prevents us from extracting names of functions mentioned inside paragraphs of ordinary text, for example.
 }
