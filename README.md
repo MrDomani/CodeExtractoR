@@ -9,7 +9,7 @@ A package to extract code snippets from PDF files.
 
 Created with extracting code snippets from articles from [RJournal](https://journal.r-project.org/) and other similar sources.
 
-Mostly for purposes related to Research Workshops subject on Warsaw University of Technology.
+Mostly for purposes related to [Case Studies](https://github.com/mini-pw/2020L-WarsztatyBadawcze) subject on Warsaw University of Technology.
 
 ## Install
 ``` r
